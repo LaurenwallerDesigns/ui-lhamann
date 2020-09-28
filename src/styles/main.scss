@@ -1,0 +1,25 @@
+@import 'colors';
+// all-blogs
+
+//mobile
+
+ .blog-aside{
+    display : none;
+}
+
+.recent-blog{
+    width: 80vw;
+    height: 30vh;
+    background-color: #eee;
+    margin-left :auto;
+    margin-right : auto;
+    margin-bottom: 2vh;
+    text-align : center;
+    h1{
+        font-size: 1.5em;
+    }
+    h3{
+        font-size: 0.8em;
+        font-style: italic;
+    }
+}
