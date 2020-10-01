@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.20.0",
     "bootstrap": "^4.5.2",
+    "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
@@ -17,7 +18,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy-production": "react-scripts build && scp -r ./build/ lhamann@68.183.113.153:/var/www/lhamann.com/html"
   },
   "eslintConfig": {
     "extends": "react-app"
