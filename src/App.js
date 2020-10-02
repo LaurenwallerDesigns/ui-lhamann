@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import './styles/App.scss';
 import "bootstrap/dist/css/bootstrap.min.css";
 import Home from './components/home';
@@ -23,10 +23,11 @@ class App extends Component {
 
     render() {
       return (
+
         <Router>
           <div>
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <Link to="/" className="navbar-brand">Lauren's Routes</Link>
+            <Link to="/" className="navbar-brand">Blog Corner</Link>
             <div className="collpase navbar-collapse">
               <ul className="navbar-nav mr-auto">
               <li className="navbar-item">
@@ -36,25 +37,22 @@ class App extends Component {
                   <Link to="/sign-up" className="nav-link">Sign-Up</Link>
                 </li>
                 <li className="navbar-item">
-                  <Link to="/blogs" className="nav-link">All Blogs</Link>
-                </li>
-                <li className="navbar-item">
                   <Link to="/blog-create" className="nav-link">New Blog Post</Link>
                 </li>
               </ul>
             </div>
           </nav>
           </div>
-          <Route path="/" exact component={Home} />
+          <Route path="/"  exact render={(props)=> <Blogs{...props}/>} />
           <Route path="/blog/:id" render={(props) => <BlogPost{...props}/>}/>
           <Route path="/blog-create" component={NewPost} />
           <Route path="/blogs" render={(props)=> <Blogs{...props}/>} />
+          <Route path="/user/:id" render={(props) => <Home{...props}/>}/>
           <Route path="/sign-up" component={SignUp} />
           <Route path="/sign-in" component={SignIn} />
         </Router>
       )
     }
-  
 }
 
 

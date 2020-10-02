@@ -19,7 +19,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy-production": "react-scripts build && scp -r ./build/ lhamann@68.183.113.153:/var/www/lhamann.com/html"
+    "deploy-production": "react-scripts build && scp -r ./build/ lham@157.230.91.27:/var/www/lhamann.com/ui"
   },
   "eslintConfig": {
     "extends": "react-app"
