@@ -3,14 +3,90 @@
 
 //mobile
 
- .blog-aside{
-    display : none;
+//home-index 
+body{
+    background-color: $purple !important;
 }
 
+#root {
+    min-height: 100vh;
+    max-height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.index-section {
+    width: auto;
+    margin: auto !important;
+    background-color: $white !important;
+    height: auto;
+    border-radius: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+header {
+    text-align: center;
+    color: $red;
+    h1 {
+        font-size: 2.3em;
+    }
+}
+
+
+.index-flex {
+    margin-top: 10vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    a {
+        &:hover {
+            text-decoration: none;
+        }
+    }
+    section {
+        background-color: $gold;
+        width: 50vw;
+        height:auto;
+        padding: 5vh;
+        text-align: center;
+        border-radius: 18px;
+        margin-bottom: 3vh;
+        border: solid 0px $red;
+        transition: border 0.5s;
+        &:hover {
+            border: solid 5px $red;
+        }
+        h1 {
+            color: $white;
+            transition: color 0.5s;
+            font-size: 2em;
+            &:hover {
+                color: $red;
+            }
+        }
+    }
+}
+
+.blog-flex{
+    background-color: #ffffff;
+    min-height: 100vh;
+    max-height: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.blog-flex-central{
+    display: flex;
+    flex-direction:column;
+
+}
 .recent-blog{
+    order: 1;
     width: 80vw;
     height: 30vh;
-    background-color: #eee;
+    background-color: $white;
     margin-left :auto;
     margin-right : auto;
     margin-bottom: 2vh;
@@ -21,5 +97,92 @@
     h3{
         font-size: 0.8em;
         font-style: italic;
+    }
+}
+.aside{
+    order: 2;
+    h1{
+        font-size: 1em;
+    }
+    h3{
+        font-size: .5em;
+    }
+}
+
+
+//admin-signin
+
+.admin-signin{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: $pink;
+    width: 60vw;
+    margin: auto;
+    text-align: center;
+    height: 80vh;
+    border-radius: 12px;
+    box-shadow: 8px 8px 8px #00000060,
+                            -8px -8px 8px #00000060;
+    h2{
+            font-size: 2.5em;
+            color: $white;
+            text-shadow: 2px 2px 2px #00000080;
+            margin-bottom: 10vh;
+    }
+    label {
+        color: $white;
+        font-size: 1.5em;
+    }
+    input {
+        width: 40vw;
+        margin: 1px auto;
+    }
+}
+@media screen and (orientation: landscape) {
+    .index-section {
+        width: 80vw;
+        height: 90vh;
+    }
+    header{
+        h1{
+            font-size: 3em;
+        }
+    }
+    .index-flex{
+        flex-direction: row;
+        margin-top: 15vh;
+        flex-wrap: wrap;
+        justify-content: center;
+        section {
+            width: 35vw;
+            margin-right: 1vw;
+            height: auto;
+            h1{
+                font-size: 1.5em;
+            }
+        }
+    }
+
+    .blog-flex {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .blog-flex-central{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 80vw;
+        margin-left: auto;
+        margin-right: auto;
+        .recent-blog {
+            min-width: auto;
+            max-width: 35vw;
+            margin-right: 2vw;
+            min-height: auto;
+            height: 45vh;
+            border-radius: 18px;
+        }
     }
 }

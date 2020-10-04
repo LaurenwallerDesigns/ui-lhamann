@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 let blogsDisplay;
 let text;
 let disabled = false;
@@ -24,16 +24,27 @@ export default class Blogs extends Component {
     renderBlogs() {
         console.log('ran');
         const blogs = this.state.blogData;
-        const target = (blogs.length - 1) - this.state.blog;
 
         blogsDisplay = blogs.map((recent, index) => {
-            if(index >= target){
+            if(index === (blogs.length - 1)){
                 const url = `/blog/${recent._id}`;
                 return (
-                        <div className="recent-blog" id={recent._id}>
+                        <div className="recent-blog featured" id={recent._id}>
                             <Link to= {url}>
                                 <h1>{recent.title}</h1>
                                 <h3>{recent.description}</h3>
+                                <span>{recent.category}</span>
+                            </Link>
+                        </div>                    
+                )
+            }else {
+                const url = `/blog/${recent._id}`;
+                return (
+                        <div className="aside" id={recent._id}>
+                            <Link to= {url}>
+                                <h1>{recent.title}</h1>
+                                <h3>{recent.description}</h3>
+                                <span>{recent.category}</span>
                             </Link>
                         </div>                    
                 )
@@ -52,8 +63,13 @@ export default class Blogs extends Component {
             this.renderBlogs();
         }
         return (
-            <div>
-            {blogsDisplay}
+            <div className="blog-flex">
+            <header>
+                <h1>Blog Central</h1>
+            </header>
+            <div className="blog-flex-central">
+                {blogsDisplay}
+            </div>
             {!disabled ? (
             <button onClick={() => {
                 this.setState({

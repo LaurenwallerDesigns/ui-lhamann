@@ -9,6 +9,7 @@ export default class NewPost extends Component {
             title: "",
             description: "",
             body: "",
+            category: "",
             createdBy: {
             firstName: "",
             lastName: ""
@@ -41,7 +42,11 @@ export default class NewPost extends Component {
             this.setState({
                 lastName: e.target.value
             })
-        }else {
+        }else if(id === "category") {
+            this.setState({
+                category: this.state.category
+            })
+        }   else {
             console.log("No matching target Id")
         }
     }
@@ -54,6 +59,7 @@ export default class NewPost extends Component {
             title: this.state.title,
             description: this.state.description,
             body: this.state.body,
+            category: this.state.category,
             createdBy: {
             firstName: this.state.firstName,
             lastName: this.state.lastName
@@ -122,6 +128,16 @@ export default class NewPost extends Component {
                                     value={this.state.lastName}
                                     onChange={this.onChangePost}
                                     />
+                        </div>
+                        <div className="form-group">
+                            <label for="categories">Choose a category:</label>
+                            <select id="category" onChange={this.onChangePost}>
+                            <option value="web-development">Web Development</option>
+                            <option value="personal">Personal</option>
+                            <option value="parenting">Parenting</option>
+                            <option value="mental-health">Mental Health</option>
+                            <option value="hobbies">Hobbies</option>
+                            </select>
                         </div>
                         <button type="submit" className="btn btn-primary">Publish</button>
                 </form>

@@ -71,7 +71,7 @@ export default class SignUp extends Component {
 
         axios.post('http://localhost:3030/user/create', newUser)
             .then(res => this.setState({
-                                            redirect: `/user/${res.data.data._id}`,
+                                            redirect: `/admin/${res.data.data._id}`,
                                             id: res.data.data._id}));
     }
     render() {

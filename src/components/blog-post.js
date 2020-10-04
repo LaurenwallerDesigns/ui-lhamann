@@ -9,6 +9,7 @@ export default class BlogPost extends Component {
             description: "",
             body: "",
             date: "",
+            category: "",
             createdBy: {
                 firstName: "",
                 lastName: ""
@@ -23,6 +24,7 @@ export default class BlogPost extends Component {
                 title: res.data.data.title,
                 description: res.data.data.description,
                 body: res.data.data.body,
+                category: res.data.data.category,
                 date: res.data.data.createdAt
                 // firstName: res.data.data.createdBy.firstName === null? "unknown" : res.data.data.createdBy.firstName ,
         })
@@ -44,6 +46,7 @@ export default class BlogPost extends Component {
                 <h2>{this.state.description}</h2>
                 <span className="date">{this.state.date}</span>
                 <span className="author">{this.state.firstName} {this.state.lastName}</span>
+                <span className="category">{this.state.category}</span>
                 <p>{this.state.body}</p>
             </div>
         )
