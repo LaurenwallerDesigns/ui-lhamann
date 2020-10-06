@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-
+import Logo from "../images/stamp-logo.svg";
+import github from '../images/social-github.svg';
+import linkdin from '../images/social-linkdin.svg';
+import twitter from '../images/social-twitter.svg';
 
 export default class Index extends Component{
     constructor(props) {
@@ -13,28 +16,36 @@ export default class Index extends Component{
     }
     render() {
         return (
+            <React.Fragment>
+            <div className="logo-section">
+                    <img src={Logo} className="stamp-logo" alt="logo" />
+                </div>
             <div className="index-section">
-                <header>
-                    <h1>Lauren's Routes</h1>
-                </header>
-                <div className="index-flex">
                     <Link to= {this.state.portfolioredirect}>
-                        <section className="portfolio">
                             <h1> Portfolio</h1>
-                        </section>
                     </Link>
                     <Link to= {this.state.blogredirect}>
-                        <section className="blog">
                             <h1> Blog</h1>
-                        </section>
                     </Link>
                     <Link to={this.state.bulletJournalredirect}>
-                        <section className="bullet-journal">
                             <h1> Bullet Journal</h1>
-                        </section>
                     </Link>
-                </div>
             </div>
+            <div className="about-section">
+                <h2 className="About"> About </h2>
+            </div>
+            <div className="written-about-section">
+                <h3>This is my about me section</h3>
+                <p>All about me and my section of about me. So much information about me.</p>
+            </div>
+            <footer>
+                <div className="social-btns">
+                    <img src={github} className="s-btn" alt="github-link" />
+                    <img src={linkdin} className="s-btn" alt="linkdin-link" />
+                    <img src={twitter} className="s-btn" alt="twitter-link" />
+                </div>
+            </footer>
+            </React.Fragment>
         );
     }
 }

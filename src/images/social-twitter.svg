@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="96px" height="62px" viewBox="0 0 96 62" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>social copy</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Welcome" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Mobile-Portrait" transform="translate(-112.000000, -1337.000000)">
+            <g id="social-copy" transform="translate(112.000000, 1337.000000)">
+                <path d="M89.4122873,44.6084846 C84.2528868,51.4990088 75.6714351,57.4775518 64.5102831,60.3486035 C51.9803106,63.5912031 37.2918135,61.5308013 25.0777226,58.6935266 C12.6003971,55.8224749 3.86100453,50.0128173 0.965422656,41.6698787 C-1.61427756,34.1713671 1.22865737,26.0986452 6.49335169,19.3432294 C14.4430401,9.21010562 31.8165314,1.10360662 49.5585512,0.0902942448 C68.1955691,-0.95679521 88.3067014,7.21725795 93.9925713,18.6676878 C98.2569737,27.1457347 95.2560979,36.7722022 89.4122873,44.6084846 Z" id="Path" fill-opacity="0.690614073" fill="#C59537" fill-rule="nonzero"></path>
+                <text id="Twitter" font-family="HomemadeApple, Homemade Apple" font-size="15" font-weight="normal" letter-spacing="1.746667" fill="#282429">
+                    <tspan x="6.88617722" y="34">Twitter</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>

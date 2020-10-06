@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="77px" height="85px" viewBox="0 0 77 85" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>stamp copy 3</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Welcome" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Mobile-Portrait" transform="translate(-243.000000, 0.000000)">
+            <g id="stamp-copy-3" transform="translate(245.000000, 0.000000)">
+                <ellipse id="Oval" stroke="#A72B25" stroke-width="4" stroke-linecap="round" cx="37.5" cy="41.5" rx="37.5" ry="41.5"></ellipse>
+                <ellipse id="Oval-Copy" stroke="#A72B25" stroke-width="4" stroke-linecap="round" cx="37.5" cy="45" rx="37.5" ry="37"></ellipse>
+                <ellipse id="Oval-Copy-2" stroke="#A72B25" stroke-width="4" stroke-linecap="round" transform="translate(37.500000, 37.000000) scale(1, -1) translate(-37.500000, -37.000000) " cx="37.5" cy="37" rx="37.5" ry="37"></ellipse>
+                <text id="lh" font-family="Aidanscriptfreetester, Aidan script free tester" font-size="36" font-weight="normal" letter-spacing="2.62" fill="#A72B25">
+                    <tspan x="18.082" y="54">lh</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>
