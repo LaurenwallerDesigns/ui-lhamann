@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Redirect } from "react-router-dom";
 import axios from 'axios';
 
+
 export default class SignUp extends Component {
     constructor(props) {
         super(props);
@@ -11,7 +12,8 @@ export default class SignUp extends Component {
             firstName: "",
             lastName: "",
             redirect: null,
-            id: ""
+            id: "",
+            jwt: null
         }
         this.createOnSubmit = this.createOnSubmit.bind(this);
         this.onChangeCreate = this.onChangeCreate.bind(this);
@@ -69,10 +71,13 @@ export default class SignUp extends Component {
             lastName: this.state.lastName
         };
 
-        axios.post('http://localhost:3030/user/create', newUser)
+        axios.post('/signup', newUser, {
+            withCredentials: true
+        })
             .then(res => this.setState({
-                                            redirect: `/admin/${res.data.data._id}`,
-                                            id: res.data.data._id}));
+                                            redirect: `/admin/${res.data.user._id}`,
+                                            id: res.data.user._id,
+                                            token: res.data.token}));
     }
     render() {
         if (this.state.redirect) {

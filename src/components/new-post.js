@@ -10,15 +10,20 @@ export default class NewPost extends Component {
             description: "",
             body: "",
             category: "",
-            createdBy: {
-            firstName: "",
-            lastName: ""
-            },
             id: "",
+            user_id: "",
+            firstName: "",
             redirect: null
         }
         this.onChangePost = this.onChangePost.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
+    }
+
+    componentDidMount() {
+        this.setState({
+            user_id: this.props.location.state.user_id,
+            firstName: this.props.location.state.firstName
+        })
     }
     onChangePost(e) {
         const id = e.target.id;
@@ -33,14 +38,6 @@ export default class NewPost extends Component {
         } else if ( id === "form-body") {
             this.setState({
                 body: e.target.value
-            })
-        } else if ( id === "form-fname"){
-            this.setState({
-                firstName: e.target.value
-            })
-        } else if ( id === "form-lname"){
-            this.setState({
-                lastName: e.target.value
             })
         }else if(id === "category") {
             this.setState({
@@ -60,13 +57,12 @@ export default class NewPost extends Component {
             description: this.state.description,
             body: this.state.body,
             category: this.state.category,
-            createdBy: {
-            firstName: this.state.firstName,
-            lastName: this.state.lastName
-            }
+            id: this.state.id
         };
 
-        axios.post('http://localhost:3030/blog/create', newPost)
+        axios.post(`http://localhost:3030/api/blog`, newPost, {
+            withCredentials: true
+        })
             .then(res => this.setState({
                                             redirect: `/blog/${res.data.data._id}`,
                                             id: res.data.data._id}));
@@ -130,7 +126,7 @@ export default class NewPost extends Component {
                                     />
                         </div>
                         <div className="form-group">
-                            <label for="categories">Choose a category:</label>
+                            <label htmlFor="categories">Choose a category:</label>
                             <select id="category" onChange={this.onChangePost}>
                             <option value="web-development">Web Development</option>
                             <option value="personal">Personal</option>

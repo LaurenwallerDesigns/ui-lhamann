@@ -2,6 +2,21 @@ import React, { Component } from 'react';
 import { Redirect } from "react-router-dom";
 import axios from 'axios';
 
+// const apiUrl = '/signin';
+// axios.interceptors.request.use(
+//   config => {
+//     const { origin } = new URL(config.url);
+//     const allowedOrigins = [apiUrl];
+//     const token = localStorage.getItem('token');
+//     if (allowedOrigins.includes(origin)) {
+//       config.headers.authorization = `Bearer ${token}`;
+//     }
+//     return config;
+//   },
+//   error => {
+//     return Promise.reject(error);
+//   }
+// );
 export default class SignIn extends Component {
     constructor(props) {
         super(props);
@@ -10,7 +25,8 @@ export default class SignIn extends Component {
             password: "",
             redirect: null,
             id: "",
-            firstName: ""
+            firstName: "",
+            jwt: null
         }
         this.submit = this.submit.bind(this);
         this.onChange = this.onChange.bind(this);
@@ -44,11 +60,21 @@ submit(e) {
         password: this.state.password
     };
 
-    axios.post('http://localhost:3030/signin', checkUser)
-        .then(res => this.setState({
-                                        redirect: `/admin/${res.data.data._id}`,
-                                        id: res.data.data._id,
-                                    firstName: res.data.data.firstName}));
+    // this.setState({
+    //     redirect: `/user/admin/${res.data.data._id}`,
+    //     id: res.data.data._id,
+    // firstName: res.data.data.firstName
+
+    axios.post('http://localhost:3030/signin', checkUser, {
+        withCredentials: true
+    })
+        .then(res =>  {
+            this.setState({
+                redirect: `/user/${res.data.user._id}`,
+                firstName: res.data.user.firstName,
+                id: res.data.user._id})
+                                        }
+                                            );
 }
     render() {
         if (this.state.redirect) {

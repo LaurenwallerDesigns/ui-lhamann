@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="36px" height="33px" viewBox="0 0 36 33" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>like-btn</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Welcome" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Mobile-Portrait" transform="translate(-126.000000, -1983.000000)" stroke="#A72B25">
+            <g id="comment-like-copy-2" transform="translate(85.000000, 1950.000000)">
+                <g id="like-btn" transform="translate(43.000000, 35.000000)">
+                    <g id="favorite">
+                        <path d="M16,3.40871935 C14.256,1.32425068 11.584,0 8.8,0 C3.864,0 0,3.94822888 0,8.99182561 C0,15.1634877 5.44,20.2070845 13.68,27.8501362 L13.8047333,27.9657223 C15.0171456,29.0892228 16.9838889,29.0882642 18.1952667,27.9657223 L18.32,27.8501362 C26.56,20.2070845 32,15.1634877 32,8.99182561 C32,3.94822888 28.136,0 23.2,0 C20.416,0 17.744,1.32425068 16,3.40871935 Z" id="Shape" stroke-width="4"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -8,6 +8,7 @@ import BlogPost from './components/blog-post';
 import NewPost from './components/new-post';
 import Blogs from './components/all-blogs';
 import SignIn from './components/sign-in';
+import SignUp from './components/sign-up';
 
 class App extends Component {
   constructor(props){
@@ -27,10 +28,11 @@ class App extends Component {
         <Router>
           <Route path="/"  exact render={(props)=> <Index{...props}/>} />
           <Route path="/blog/:id" render={(props) => <BlogPost{...props}/>}/>
-          <Route path="/blog-create" component={NewPost} />
+          <Route path="/user/blog/create" component={NewPost} />
           <Route path="/blogs" render={(props)=> <Blogs{...props}/>} />
-          <Route path="/admin/:id" render={(props) => <Home{...props}/>}/>
-          <Route path="/admin-sign-in" component={SignIn} />
+          <Route path="/user/:id" render={(props) => <Home{...props}/>}/>
+          <Route path="/user-sign-in" component={SignIn} />
+          <Route path="/user-sign-up" component={SignUp} />
         </Router>
       )
     }

@@ -14,7 +14,9 @@ export default class Blogs extends Component {
         }
     }
     componentDidMount() {
-        Axios.get('http://localhost:3030/blog')
+        Axios.get('http://localhost:3030/api/blog', {
+            withCredentials: true
+        })
         .then( res => {
             this.setState({
                 blogData: res.data.data
