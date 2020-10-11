@@ -1,32 +1,14 @@
 import React, { Component } from 'react';
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import axios from 'axios';
 
-// const apiUrl = '/signin';
-// axios.interceptors.request.use(
-//   config => {
-//     const { origin } = new URL(config.url);
-//     const allowedOrigins = [apiUrl];
-//     const token = localStorage.getItem('token');
-//     if (allowedOrigins.includes(origin)) {
-//       config.headers.authorization = `Bearer ${token}`;
-//     }
-//     return config;
-//   },
-//   error => {
-//     return Promise.reject(error);
-//   }
-// );
 export default class SignIn extends Component {
     constructor(props) {
         super(props);
         this.state = {
             email: "",
             password: "",
-            redirect: null,
-            id: "",
-            firstName: "",
-            jwt: null
+            firstName: ""
         }
         this.submit = this.submit.bind(this);
         this.onChange = this.onChange.bind(this);
@@ -60,30 +42,18 @@ submit(e) {
         password: this.state.password
     };
 
-    // this.setState({
-    //     redirect: `/user/admin/${res.data.data._id}`,
-    //     id: res.data.data._id,
-    // firstName: res.data.data.firstName
-
     axios.post('http://localhost:3030/signin', checkUser, {
         withCredentials: true
     })
         .then(res =>  {
-            this.setState({
-                redirect: `/user/${res.data.user._id}`,
-                firstName: res.data.user.firstName,
-                id: res.data.user._id})
-                                        }
-                                            );
+            if(res.status === 201){
+                this.props.changeUser()
+            }});
 }
     render() {
-        if (this.state.redirect) {
+        if(this.props.isUser){
             return <Redirect
-            to={{
-            pathname: `${this.state.redirect}`,
-            state: { id: this.state.id,
-                        firstName: this.state.firstName }
-          }}
+            to="/user"
         />
         }
         return (
@@ -110,7 +80,8 @@ submit(e) {
                                     required
                                     />
                         </div>
-                        <button type="submit" className="btn btn-primary">Sign In</button>
+                        <button type="submit" className="btn submit-btn">Sign In</button>
+                        <br></br><Link to="/user-sign-up" className="link-below">Create an account</Link>
                 </form>
             </div>
         )

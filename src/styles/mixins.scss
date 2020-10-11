@@ -1,0 +1,50 @@
+@mixin form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: $pink;
+    width: 90vw;
+    margin: auto;
+    text-align: center;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 8px 8px 10px #00000020,
+                            -8px -8px 10px #00000020;
+    h2{
+            font-size: 2.5em;
+            color: $white;
+            text-shadow: 2px 2px 4px #00000080;
+            margin-bottom: 3vh;
+    }
+    label {
+        color: $white;
+        text-shadow: 2px 2px 4px #00000040;
+        font-size: 1.5em;
+        font-family: Raleway;
+    }
+    input {
+        width: 60vw;
+        margin: 1px auto;
+    }
+    .submit-btn{
+        background-color: $gold;
+        box-shadow: 2px 2px 4px $black-50;
+        color: $white;
+        font-family: Raleway;
+        width: 20vw;
+        margin-bottom: 3vh;
+        transition: width .5s;
+        &:hover {
+            color: $white;
+            width: 30vw;
+        }
+    }
+    .link-below{
+        color: $red;
+        font-family: LemonMilk;
+        &:hover{
+            color: $white;
+        }
+    }
+    
+}

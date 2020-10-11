@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { Redirect } from "react-router-dom";
 import axios from 'axios';
 
+import NotAuth from './not-auth';
+
+//ONLY FOR ISUSER(TRUE)
 export default class NewPost extends Component {
     constructor(props) {
         super(props);
@@ -9,21 +12,13 @@ export default class NewPost extends Component {
             title: "",
             description: "",
             body: "",
-            category: "",
-            id: "",
-            user_id: "",
-            firstName: "",
-            redirect: null
+            category: ""
         }
         this.onChangePost = this.onChangePost.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
     }
 
     componentDidMount() {
-        this.setState({
-            user_id: this.props.location.state.user_id,
-            firstName: this.props.location.state.firstName
-        })
     }
     onChangePost(e) {
         const id = e.target.id;
@@ -56,28 +51,22 @@ export default class NewPost extends Component {
             title: this.state.title,
             description: this.state.description,
             body: this.state.body,
-            category: this.state.category,
-            id: this.state.id
+            category: this.state.category
         };
 
-        axios.post(`http://localhost:3030/api/blog`, newPost, {
-            withCredentials: true
-        })
-            .then(res => this.setState({
-                                            redirect: `/blog/${res.data.data._id}`,
-                                            id: res.data.data._id}));
+        this.props.onSubmitNewPost(e, newPost);
     }
     render() {
-        if (this.state.redirect) {
+        if (this.props.id !== null) {
             return <Redirect
             to={{
-            pathname: `${this.state.redirect}`,
-            state: { id: this.state.id }
+            pathname: `/blog/${this.props.id}`
           }}
         />
           }
         return (
-            <div>
+            (this.props.isUser ?
+                <div>
                 <h2>New Blog Post</h2>
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group"> 
@@ -107,24 +96,6 @@ export default class NewPost extends Component {
                                     onChange={this.onChangePost}
                                     />
                         </div>
-                        <div className="form-group"> 
-                            <label>First Name: </label>
-                            <input  type="text"
-                                    className="form-control"
-                                    id="form-fname"
-                                    value={this.state.firstName}
-                                    onChange={this.onChangePost}
-                                    />
-                        </div>
-                        <div className="form-group"> 
-                            <label>Last Name: </label>
-                            <input  type="text"
-                                    className="form-control"
-                                    id="form-lname"
-                                    value={this.state.lastName}
-                                    onChange={this.onChangePost}
-                                    />
-                        </div>
                         <div className="form-group">
                             <label htmlFor="categories">Choose a category:</label>
                             <select id="category" onChange={this.onChangePost}>
@@ -138,6 +109,9 @@ export default class NewPost extends Component {
                         <button type="submit" className="btn btn-primary">Publish</button>
                 </form>
             </div>
+            : 
+            <NotAuth />
+                )
         )
     }
 }

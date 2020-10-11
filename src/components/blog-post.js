@@ -1,5 +1,5 @@
 import Axios from 'axios';
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
 import like from '../images/like-btn.svg';
 import menu from '../images/menu-btn.svg';
 import github from '../images/social-github.svg';
@@ -18,18 +18,13 @@ export default class BlogPost extends Component {
             date: "",
             category: "",
             id: "",
-            createdBy: {
-                firstName: "",
-                lastName: ""
-            },
-            jwt: null,
             comments: [],
             displayNewComment: false
         }
         this.newCommentDisplay = this.newCommentDisplay.bind(this);
     }
     componentDidMount() {
-        const url = `http://localhost:3030/blog/${this.props.match.params.id}`;
+        const url = `http://localhost:3030/api/blog/${this.props.id}`;
         Axios.get(url, {
             withCredentials: true
         })
@@ -41,7 +36,6 @@ export default class BlogPost extends Component {
                 category: res.data.data.category,
                 date: res.data.data.createdAt,
                 id: res.data.data._id
-                // firstName: res.data.data.createdBy.firstName === null? "unknown" : res.data.data.createdBy.firstName ,
         })
         if(res.status >= 400){
             display = (

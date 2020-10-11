@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import axios from 'axios';
 
 
@@ -82,15 +82,11 @@ export default class SignUp extends Component {
     render() {
         if (this.state.redirect) {
             return <Redirect
-            to={{
-            pathname: `${this.state.redirect}`,
-            state: { id: this.state.id,
-                        firstName: this.state.firstName }
-          }}
+            to="/user"
         />
         }
         return (
-            <div>
+            <div className="admin-signup">
                 <h2>Create an Account</h2>
                 <form onSubmit={this.createOnSubmit}>
                     <div className="form-group"> 
@@ -143,7 +139,8 @@ export default class SignUp extends Component {
                                     required
                                     />
                         </div>
-                        <button type="submit" className="btn btn-primary">Submit</button>
+                        <button type="submit" className="btn submit-btn">Submit</button>
+                        <br></br><Link to="/user-sign-in" className="link-below">Already have an account, Sign in</Link>                       
                 </form>
             </div>
         )

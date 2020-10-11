@@ -1,4 +1,4 @@
-@import 'colors', 'fonts';
+@import 'colors', 'fonts', 'mixins';
 // all-blogs
 
 //mobile
@@ -8,6 +8,11 @@ body{
     background-color: $white !important;
 }
 
+.underline-img {
+    width: 200vw;
+    margin-bottom: 5vh;
+    margin-top: -5vh;
+}
 .logo-section {
     display: inline-flex;
     flex-direction: row;
@@ -20,26 +25,12 @@ body{
     object-fit: contain;
   }
 
-.index-section {
-    width: 70vw;
-    margin-left: 0px;
-    margin-top: 0px;
-    background-color: $pink;
-    height: 95vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    box-shadow: 5px 5px 6px 0 rgba(0, 0, 0, 0.3);
-
+.links {
     a {
         @include nav-li;
-        &:hover {
-            text-decoration: none;
-        }
-    }
-    h1 {
         transition: color 0.5s;
         &:hover {
+            text-decoration: none;
             color: $red;
         }
     }
@@ -47,17 +38,13 @@ body{
 
 .about-section {
     width: 100vw;
-    height: 40vh;
-    background-image: url("../images/about-underline.svg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-size: 100vw  220px;
+    height: auto;
+    margin-bottom: 5vh;
 }
 .About{
     text-shadow: 0 2px 9px rgba(0, 0, 0, 0.3);
     font-family: LemonMilk;
-    font-size: 4.5em;
+    font-size: 3.5em;
     font-weight: 300;
     font-stretch: normal;
     font-style: normal;
@@ -341,32 +328,9 @@ footer {
 }
 //admin-signin
 
-.admin-signin{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-color: $pink;
-    width: 60vw;
-    margin: auto;
-    text-align: center;
-    height: 80vh;
-    border-radius: 12px;
-    box-shadow: 8px 8px 8px #00000060,
-                            -8px -8px 8px #00000060;
-    h2{
-            font-size: 2.5em;
-            color: $white;
-            text-shadow: 2px 2px 2px #00000080;
-            margin-bottom: 10vh;
-    }
-    label {
-        color: $white;
-        font-size: 1.5em;
-    }
-    input {
-        width: 40vw;
-        margin: 1px auto;
-    }
+.admin-signin,
+.admin-signup{
+   @include form;
 }
 @media screen and (orientation: landscape) {
     .index-section {
