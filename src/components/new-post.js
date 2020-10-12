@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Redirect } from "react-router-dom";
-import axios from 'axios';
 
 import NotAuth from './not-auth';
 
@@ -12,7 +11,8 @@ export default class NewPost extends Component {
             title: "",
             description: "",
             body: "",
-            category: ""
+            category: "",
+            id: null
         }
         this.onChangePost = this.onChangePost.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
@@ -54,13 +54,17 @@ export default class NewPost extends Component {
             category: this.state.category
         };
 
-        this.props.onSubmitNewPost(e, newPost);
+        this.props.onSubmitNewPost(e, newPost, (id) => {
+            this.setState({
+                id: id
+            });
+        } );
     }
     render() {
-        if (this.props.id !== null) {
+        if (this.state.id !== null) {
             return <Redirect
             to={{
-            pathname: `/blog/${this.props.id}`
+            pathname: `/blog/${this.state.id}`
           }}
         />
           }

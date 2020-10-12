@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
 import github from '../images/social-github.svg';
 import linkdin from '../images/social-linkdin.svg';
 import twitter from '../images/social-twitter.svg';
@@ -9,7 +8,7 @@ import twitter from '../images/social-twitter.svg';
 export default class Footer extends Component{
     render() {
         return (
-            (this.props.isUser 
+            (this.props.isUser !== null
                 ? 
                 <div><h3>User Footer</h3></div>
                 : 

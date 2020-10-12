@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { Link} from "react-router-dom";
-import Axios from 'axios';
 import "bootstrap/dist/css/bootstrap.min.css";
 
 
@@ -11,17 +9,17 @@ export default class UserProfile extends Component {
         this.state = {
             path: null,
             firstName: "",
-            isUser: true
+            user_id: this.props.isUser,
+            email: ""
         }
     }
     componentDidMount(props) {
-        Axios.get('http://localhost:3030/api/user', {
-            withCredentials: true
-        })
-        .then(res => 
+        this.props.getData((data) => {
             this.setState({
-            firstName: res.data.data.firstName
-        }))
+                firstName: data.firstName,
+                email: data.email
+            })
+        })
     }
 
     getBlogs() {

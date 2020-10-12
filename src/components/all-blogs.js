@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Axios from 'axios';
 import { Link } from "react-router-dom";
 let blogsDisplay;
 let text;
@@ -10,36 +9,27 @@ export default class Blogs extends Component {
         this.state = {
             filter: null,
             blog: 10,
-            blogData: null,
-            isUser: false
+            blogData: null
         }
     }
     componentDidMount() {
-        //If isUser === true then get just this user's blog, if not get all blogs
-        const url = this.props.isUser ?' http://localhost:3030/api/blog/user' : 'http://localhost:3030/api/blog';
-        Axios.get(url, {
-            withCredentials: true
-        })
-        .then( res => {
-            this.setState({
-            //Set State to all the data that GET responds with
-                blogData: res.data.data
-            })
+        this.props.displayPosts((data) => {
+            this.renderBlogs(data);
         })
     }
-    renderBlogs() {
-        const blogs = this.state.blogData;
+    renderBlogs(blog) {
+        const blogs = blog
         //Mapping over all the blogData gathered from GET
         blogsDisplay = blogs.map((recent, index) => {
         //This is pulling the most recent blog to be the Featured Blog
-        //Eventuall would like to add a boolean Featured Button on UPDATE/NEW POST
+        //Eventually would like to add a boolean Featured Button on UPDATE/NEW POST
             if(index === (blogs.length - 1)){
             //if User is true, then the edit panel will be available on hover over blog
-                const url = this.state.isUser ? `/blog/${recent._id}/edit`: `/blog/${recent._id}`;
+                const url = this.props.isUser !== null? `/blog/${recent._id}`: `/blog/${recent._id}`;
                 return (
                     //Returns the blog Div with id from GET and Link to the specific blog post
-                        <div className="recent-blog featured" id={recent._id}>
-                            <Link to= {url}>
+                        <div className="recent-blog featured" id={recent._id} key={index * 4}>
+                            <Link to= {url} onClick={() => this.props.getIdOnClick(recent._id)}>
                                 <h1>{recent.title}</h1>
                                 <h3>{recent.description}</h3>
                                 <span>{recent.category}</span>
@@ -47,10 +37,10 @@ export default class Blogs extends Component {
                         </div>                    
                 )
             }else {
-                const url = this.state.isUser ? `/blog/${recent._id}/edit`: `/blog/${recent._id}`;
+                const url = this.props.isUser !== null ? `/blog/${recent._id}/edit`: `/blog/${recent._id}`;
                 return (
-                        <div className="aside" id={recent._id}>
-                            <Link to= {url}>
+                        <div className="aside" id={recent._id} key={index * 4}>
+                            <Link to= {url} onClick={() => this.props.getIdOnClick(recent._id)}>
                                 <h1>{recent.title}</h1>
                                 <h3>{recent.description}</h3>
                                 <span>{recent.category}</span>
@@ -59,19 +49,12 @@ export default class Blogs extends Component {
                 )
             }
         })
-        if(this.state.blog >= this.state.blogData.length - 1){
-            text = "End";
-            disabled = true;
-        }else{
-            text="Load More";
-        }
-        console.log(blogsDisplay);
+        this.setState({
+            blogData:blog
+        })
+
     }
     render() {
-        if(this.state.blogData){
-            this.renderBlogs();
-        }
-
         return (
             <div className="blog-flex">
             <header>

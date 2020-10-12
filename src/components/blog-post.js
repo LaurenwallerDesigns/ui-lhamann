@@ -1,4 +1,3 @@
-import Axios from 'axios';
 import React, { Component } from 'react';
 import like from '../images/like-btn.svg';
 import menu from '../images/menu-btn.svg';
@@ -24,28 +23,29 @@ export default class BlogPost extends Component {
         this.newCommentDisplay = this.newCommentDisplay.bind(this);
     }
     componentDidMount() {
-        const url = `http://localhost:3030/api/blog/${this.props.id}`;
-        Axios.get(url, {
-            withCredentials: true
+        //on mount call displayPost from app with callback function to set state in post component and check status
+        this.props.displayPost((data, status) => {
+        //if status comes back 400 or greater than something wen wrong
+            if(status >= 400){
+                display = (
+                    <React.Fragment>
+                        <h1>Uh Oh something went wrong</h1>
+                        <h2>Please Try Again</h2>
+                    </React.Fragment>
+                )
+            }else {
+            //set state of returned data
+                this.setState({
+                    title: data.title,
+                    description: data.description,
+                    body: data.body,
+                    category: data.category,
+                    date: data.createdAt,
+                    id: data._id,
+                    comment: data.comments
+                })
+            }
         })
-        .then(res => {
-            this.setState({
-                title: res.data.data.title,
-                description: res.data.data.description,
-                body: res.data.data.body,
-                category: res.data.data.category,
-                date: res.data.data.createdAt,
-                id: res.data.data._id
-        })
-        if(res.status >= 400){
-            display = (
-                <React.Fragment>
-                    <h1>Uh Oh something went wrong</h1>
-                    <h2>Please Try Again</h2>
-                </React.Fragment>
-            )
-        }
-    })
     }
 
     newCommentDisplay() {

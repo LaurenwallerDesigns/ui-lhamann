@@ -9,12 +9,17 @@ export default class Nav extends Component{
         this.state = {}
     }
     render() {
+        console.log(this.props.location.pathname);
+        const collapse = this.props.location.pathname !== "/" ? true : false;
+        const logoLink = this.props.location.pathname !== "/" ? "/" : "/user-sign-in";
+        const userlogoLink = this.props.location.pathname !== "/" ? "/user" : "/user-sign-in";
+
         return (
-            (this.props.isUser 
+            (this.props.isUser !== null
                 ?
                 <React.Fragment>
                         <div className="d-flex flex-row justify-content-between w-100">
-                        <div className="nav flex-column flex-md-row links">
+                        <div className="nav flex-row flex-md-row links w-70">
                             <Link to= '/blogs' className="nav-link">
                                     Blogs
                             </Link>
@@ -28,13 +33,15 @@ export default class Nav extends Component{
                                 Log-Out
                             </Link>
                         </div>
+                        <Link to={userlogoLink}>
+                            <img src={Logo} className="stamp-logo" alt="logo" />
+                        </Link>
                     </div>
-                    <img src={Underline} className="underline-img" alt="/" />
                 </React.Fragment>
                 : 
                 <React.Fragment>
-                        <div className="d-flex flex-row justify-content-between w-100">
-                        <div className="nav flex-column flex-lg-row links">
+                        <div className="d-flex flex-row justify-content-between">
+                        <div className="nav flex-row flex-lg-row links w-70">
                             <Link to= '/portfolio' className="nav-link">
                                     Portfolio
                             </Link>
@@ -46,13 +53,14 @@ export default class Nav extends Component{
                             </Link>
                         </div>
                         <div className="logo-section">
-                            <Link to="/user-sign-in">
+                            <Link to={logoLink}>
                                 <img src={Logo} className="stamp-logo" alt="logo" />
                             </Link>
                         </div>
                     </div>
-                    <img src={Underline} className="underline-img" alt="/" />
-                </React.Fragment> )
-        );
+                    <img src={Underline} className="underline-img" style={collapse ? {"display": "none" }: {"display": "block"}}alt="/" />
+                </React.Fragment> 
+            )
+        )
     }
 }

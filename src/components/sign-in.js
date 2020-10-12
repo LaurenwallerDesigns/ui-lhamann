@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Redirect, Link } from "react-router-dom";
-import axios from 'axios';
 
 export default class SignIn extends Component {
     constructor(props) {
@@ -34,24 +33,17 @@ export default class SignIn extends Component {
 }
 
 submit(e) {
-    e.preventDefault();
-
     console.log("sign-in");
     const checkUser = {
         email: this.state.email,
         password: this.state.password
     };
 
-    axios.post('http://localhost:3030/signin', checkUser, {
-        withCredentials: true
-    })
-        .then(res =>  {
-            if(res.status === 201){
-                this.props.changeUser()
-            }});
+    this.props.submit(e, checkUser)
 }
     render() {
-        if(this.props.isUser){
+        if(this.props.isUser !== null){
+            console.log('in', this.props.isUser);
             return <Redirect
             to="/user"
         />

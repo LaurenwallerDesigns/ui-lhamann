@@ -71,7 +71,7 @@ export default class SignUp extends Component {
             lastName: this.state.lastName
         };
 
-        axios.post('/signup', newUser, {
+        axios.post('http://localhost:3030/signup', newUser, {
             withCredentials: true
         })
             .then(res => this.setState({
