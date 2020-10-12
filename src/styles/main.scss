@@ -20,12 +20,13 @@ body{
     float: right;
 }
 .stamp-logo {
-    width: 75px;
+    width: 20vw;
     height: 83px;
     object-fit: contain;
   }
 
 .links {
+    width: 70vw;
     a {
         @include nav-li;
         transition: color 0.5s;
